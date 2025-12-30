@@ -10,20 +10,21 @@ document.addEventListener('DOMContentLoaded', () =>{
     const formularioPensamento = document.getElementById("pensamento-form")
     const btnCancelarPensamento = document.getElementById("botao-cancelar")
 
-    formularioPensamento.addEventListener('submit', inserirNovoPensamento)
-    btnCancelarPensamento.addEventListener('click', ui.limparFormulario)
+    formularioPensamento.addEventListener('submit', inserirNovoPensamento) //Eventto de submit do formulario
+    btnCancelarPensamento.addEventListener('click', ui.limparFormulario) //Evento de cancelar dados inserido nos inputs do formulario
 })
 
+//Método para inserir um novo pensamento pegando os dados do formulario
 async function inserirNovoPensamento(event){
-    event.preventDefault()
+    event.preventDefault() //Tira o comportamento default do submit
     
-    const id = document.getElementById("pensamento-id").value
-    const conteudo = document.getElementById("pensamento-conteudo").value
-    const autoria = document.getElementById("pensamento-autoria").value
+    const id = document.getElementById("pensamento-id").value //Guarda o valor do id
+    const conteudo = document.getElementById("pensamento-conteudo").value //Guarda o valor do conteudo
+    const autoria = document.getElementById("pensamento-autoria").value //Guarda o valor da autoria
 
     try {
-        await api.salvarPensamentos({ conteudo, autoria })
-        ui.renderizarPensamentos()
+        await api.salvarPensamentos({ conteudo, autoria }) //Salva o conteudo e autoria no json, não precisa passar o id pois ele cria um aleatorio. Faz POST
+        ui.renderizarPensamentos() //Renderiza os pensamentos após o salvamento dos dados no json
     } catch (error) {
         alert("Erro ao salvar pensamento")
     }

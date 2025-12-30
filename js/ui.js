@@ -41,7 +41,7 @@ const ui = {
     },
 
     limparFormulario(){
-        document.getElementById("pensamento-form").reset()
+        document.getElementById("pensamento-form").reset() //Limpa os dados que estão preenchidos nos formularios
     }
 }
 
