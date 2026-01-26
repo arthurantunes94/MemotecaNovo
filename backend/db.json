@@ -37,7 +37,7 @@
     },
     {
       "id": "7e2a",
-      "conteudo": "Que a força esteja com você!",
+      "conteudo": "Que a força esteja com você! Seu pirralho",
       "autoria": "Mestre Yoda"
     },
     {
@@ -79,6 +79,11 @@
       "id": "649b",
       "conteudo": "Quando perco a fé",
       "autoria": "NX Zero"
+    },
+    {
+      "id": "f555",
+      "conteudo": "Posso jogar ou assistir desenho?",
+      "autoria": "Thomas Mendes"
     }
   ]
 }

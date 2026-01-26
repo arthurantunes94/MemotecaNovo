@@ -23,7 +23,11 @@ async function inserirNovoPensamento(event){
     const autoria = document.getElementById("pensamento-autoria").value //Guarda o valor da autoria
 
     try {
-        await api.salvarPensamentos({ conteudo, autoria }) //Salva o conteudo e autoria no json, não precisa passar o id pois ele cria um aleatorio. Faz POST
+        if (id) {
+            await api.editarPensamento({id,  conteudo, autoria }) //Edita o pensamento existente
+        } else {
+            await api.salvarPensamentos({ conteudo, autoria }) //Salva o conteudo e autoria no json, não precisa passar o id pois ele cria um aleatorio. Faz POST
+        }
         ui.renderizarPensamentos() //Renderiza os pensamentos após o salvamento dos dados no json
     } catch (error) {
         alert("Erro ao salvar pensamento")

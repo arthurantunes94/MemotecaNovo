@@ -32,17 +32,40 @@ const ui = {
         const divPensamentoAutoria = document.createElement('div')
         divPensamentoAutoria.textContent = pensamento.autoria
         divPensamentoAutoria.classList.add('pensamento-autoria')
-        
+
+        const divIcones = document.createElement('div')
+        divIcones.classList.add('icones')
+
+        const btnEditar = document.createElement('button')
+        btnEditar.classList.add('botao-editar')
+        btnEditar.onclick = () => ui.editarPensamento(pensamento.id)
+
+        const iconeEditar = document.createElement('img')
+        iconeEditar.src = 'assets/imagens/icone-editar.png'
+        iconeEditar.alt = 'Editar'
+        btnEditar.appendChild(iconeEditar)
+        divIcones.appendChild(btnEditar)
+
+       
+
         li.appendChild(imgAspas)
         li.appendChild(divPensamentoConteudo)
         li.appendChild(divPensamentoAutoria)
+        li.appendChild(divIcones)
 
         listaPensamentos.appendChild(li)
     },
 
     limparFormulario(){
         document.getElementById("pensamento-form").reset() //Limpa os dados que estão preenchidos nos formularios
+    },
+
+    async editarPensamento(pensamentoId) {
+        const pensamento = await api.buscarPensamento(pensamentoId)
+        document.getElementById("pensamento-id").value = pensamento.id
+        document.getElementById("pensamento-conteudo").value = pensamento.conteudo
+        document.getElementById("pensamento-autoria").value = pensamento.autoria
     }
-}
+} 
 
 export default ui //Para possibilitar a importação de outras classes
